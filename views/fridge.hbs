@@ -1,0 +1,38 @@
+
+<div class="container">
+    <h2> Welcome to ur current state of ur fridg </h2> <br>
+    <ul>
+        {{#each people}}
+            <li>
+                <div class="row">
+                    <div class="col">
+                        <h3>{{this.name}}</h3>
+                        <p> Quantity:  {{this.quantity}} </p>
+                    </div>
+                    <div class="col">
+                        <form method="post" action="/item/update?name={{this.name}}">
+                            <input type="number" name="quantity" placeholder="Choose quantity">
+                            <input type="submit" value="Update">
+                        </form>
+                    </div>
+                    <div class="col">
+                        <a href="/item/delete?name={{this.name}}&quantity={{this.quantity}}"> Remove item </a>
+                    </div>
+                </div>
+            </li>
+        {{/each}}
+    </ul>
+    <a href="/">Back</a>
+</div>
+<div class="emptyblock">
+
+</div>
+<div class="container">
+    <h3>Add a new item to yer frisgd</h3>
+    <form method="post" action="/item/add">
+        <input type="text" name="name" placeholder="Insert name"> <br>
+        <input type="number" name="quantity" placeholder="Choose quantity"> <br>
+        <input type="submit" value="Add">
+    </form>
+</div>
+

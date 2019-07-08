@@ -1,10 +1,10 @@
 const mongo = require('mongodb').MongoClient;
-const url = "mongodb://localhost:27017/andmebaas";
+const url = "mongodb://localhost:27017/fridgely";
 let db = null;
 
 exports.connectDatabase = (callback) => {
     mongo.connect(url, { useNewUrlParser: true }, (err, client) => {
-        db = client.db('andmebaas');
+        db = client.db('fridgely');
         callback();
     });
 };
