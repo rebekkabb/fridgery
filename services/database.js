@@ -8,6 +8,11 @@ exports.connectDatabase = (callback) => {
     }, (err, client) => {
         if (err) throw err;
         db = client.db();
+        db.createCollection("fridges");
+        db.createCollection("users");
+        db.createCollection("items");
+        db.createCollection("fridgeUsers");
+        db.createCollection("fridge");
         callback();
     });
 };
