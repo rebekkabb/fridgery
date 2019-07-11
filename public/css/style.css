@@ -11,4 +11,9 @@ a {
   height: 10em;
 }
 
+.responsive {
+  height: auto;
+  width: 100%;
+}
+
 
