@@ -1,5 +1,4 @@
 body {
-  padding: 10em;
   font: 1rem "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
@@ -16,4 +15,22 @@ a {
   width: 100%;
 }
 
+.header {
+  background-image: url("../img/Cinnamint.jpg");
+  background-size: cover;
+  padding: 190px 0px 120px 0px;
+  opacity: 50%;
+  z-index: -2;
+  font-family: 'Roboto', sans-serif;
+}
 
+.headersignup {
+  background-color: white;
+  padding: 2em;
+  border-radius: 4px;
+}
+
+.headertext {
+  padding: 8em;
+  color: #ffff;
+}
