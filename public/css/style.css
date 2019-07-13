@@ -10,11 +10,6 @@ a {
   height: 10em;
 }
 
-.responsive {
-  height: auto;
-  width: 100%;
-}
-
 .header {
   background-image: url("../img/Cinnamint.jpg");
   background-size: cover;
@@ -33,10 +28,4 @@ a {
 .headertext {
   padding: 8em;
   color: #ffff;
-}
-
-@media screen and (max-width: 1200px) {
-    .headersignup  {
-        margin-left: 20%;
-    }
 }

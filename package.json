@@ -16,7 +16,8 @@
     "mongodb": "^3.2.7",
     "bcrypt": "^3.0.6",
     "express-session": "^1.16.2",
-    "connect-mongo": "^3.0.0"
+    "connect-mongo": "^3.0.0",
+    "font-awesome": "^4.7.0"
   },
   "devDependencies": {
     "nodemon": "^1.19.1"
