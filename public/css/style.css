@@ -29,3 +29,13 @@ a {
   padding: 8em;
   color: #ffff;
 }
+
+.errorPage {
+  margin-left: 15%;
+  padding: 10%;
+}
+
+.carousel-inner > .item > img {
+  width:450px;
+  height:420px;
+}
