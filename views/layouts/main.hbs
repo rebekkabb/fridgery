@@ -11,9 +11,15 @@
   <body>
   <div class="container">
       <nav class="navbar navbar-expand-lg navbar-light" style="background-color: transparent;" >
-          <a class="navbar-brand" href="#">Fridgery</a>
+          <a class="navbar-brand" href="/">Fridgery</a>
           <div class="ml-auto">
-              <button class="btn btn-outline-success" data-toggle="modal" type="button" data-target="#signupModal">Sign up!</button>
+              {{#if session}}
+                  <a href="/users/logout">
+                      <button class="btn btn-outline-success" type="button">Log out</button>
+                  </a>
+              {{else if index}}
+                  <button class="btn btn-outline-success" data-toggle="modal" type="button" data-target="#signupModal">Sign up!</button>
+              {{/if}}
           </div>
       </nav>
   </div>

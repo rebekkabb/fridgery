@@ -18,47 +18,65 @@ const app = express();
 // view engine setup
 app.set('view engine', 'hbs');
 
-app.engine( 'hbs', hbs( {
-  extname: 'hbs',
-  defaultLayout: 'main',
-  layoutsDir: __dirname + '/views/layouts/',
-  partialsDir: __dirname + '/views/partials/'
+app.engine('hbs', hbs({
+    extname: 'hbs',
+    defaultLayout: 'main',
+    layoutsDir: __dirname + '/views/layouts/',
+    partialsDir: __dirname + '/views/partials/'
 }));
 
 app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(session({
-  secret: process.env.SESSION_SECRET,
-  resave: false,
-  saveUninitialized: false,
-  store: new MongoStore({
-    url: mongo_url
-  })
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    store: new MongoStore({
+        url: mongo_url
+    })
 }));
 
+app.use('*', saveAuth);
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/fridge', fridgeRouter);
-app.use('/item', itemRouter);
+app.use('/fridge', checkAuth, fridgeRouter);
+app.use('/item', checkAuth, itemRouter);
+
+function saveAuth(req, res, next) {
+    if (req.session && req.session.user) {
+        res.locals.session = req.session;
+    }
+    return next();
+}
+
+function checkAuth(req, res, next) {
+    if (req.session && req.session.user) {
+        return next();
+    } else {
+        var err = new Error('You must be logged in to see this page');
+        err.status = 401;
+        return next(err);
+    }
+}
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
-  next(createError(404));
+    next(createError(404));
 });
 
 // error handler
 app.use((err, req, res, next) => {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+    // set locals, only providing error in development
+    res.locals.message = err.message;
+    res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
+    // render the error page
+    res.status(err.status || 500);
+    res.render('error');
 });
 
 module.exports = app;

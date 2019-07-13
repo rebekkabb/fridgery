@@ -6,7 +6,8 @@ router.get('/', (req, res) => {
   const collection = db().collection('andmebaas');
   collection.find().toArray((err, items) => {
     res.render('index', {
-      title : 'Fridgery'
+      title : 'Fridgery',
+      index: true
     });
   });
 });
