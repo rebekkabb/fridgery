@@ -20,7 +20,7 @@ router.post('/create', (req, res, next) => {
             password: password,
         }, (err, response) => {
             if (err) throw err;
-            res.redirect('/fridge')
+            res.redirect('/')
         });
     });
 });
