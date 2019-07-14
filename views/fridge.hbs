@@ -1,6 +1,6 @@
 <div class="container">
     <div class="itemList">
-        <h2 class="text-center"> Welcome to ur current state of ur fridg </h2>
+        <h2 class="text-center"> Welcome to ur current state of ur fridg {{this.user}} </h2>
         <hr>
         <div class="text-center">
             <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#addItemModal">
@@ -9,7 +9,7 @@
             <br><br>
         </div>
         <ul class="list-group">
-            {{#each people}}
+            {{#each items}}
                 <li class="list-group-item">
                     <div class="row">
                         <div class="col">
