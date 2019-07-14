@@ -5,12 +5,23 @@
                 <div class="headertext">
                     <h1>Welcome to Fridgery!</h1>
                     <p>This is a simple app, made to help you manage the contents of your fridge</p>
-
                 </div>
             </div>
             <div class="headersignup">
+            {{#if session}}
+                <h2>You are logged in</h2>
+                <a href="/fridge">
+                    <button class="btn btn-primary">Check your fridge!</button>
+                </a>
+            {{else}}
                 <div class="col">
-                    <h3 class="text-center">Log in now!</h3>
+                    <h3 class="text-center">Sign in</h3>
+                    <a href="{{googleLogin}}">
+                        <button class="btn btn-primary auth-google">Sign in with Google</button>
+                    </a>
+                    <div class="hr-lable">
+                        <span>or</span>
+                    </div>
                     <form method="post" action="/users/login">
                         <div class="form-group">
                             <label for="exampleInputEmail1">Email address</label>
@@ -26,11 +37,12 @@
                                    placeholder="Password">
                         </div>
                         <div class="text-center">
-                            <button type="submit" class="btn btn-primary">Login</button>
+                            <button type="submit" class="btn btn-primary">Sign in</button>
                         </div>
                     </form>
                 </div>
             </div>
+{{/if}}
         </div>
     </div>
 </div>

@@ -47,3 +47,58 @@ a {
 #fileBox {
   margin-top: 2em;
 }
+
+.hr-lable {
+  position: relative;
+  margin-top: 20px;
+  margin-bottom: 5px;
+  text-align: center;
+  clear: both;
+  overflow: hidden;
+}
+
+.hr-lable::before {
+  content: '';
+  position: relative;
+  width: 25%;
+  background-color: rgba(0,0,0,0.2);
+  display: inline-block;
+  height: 1px;
+  vertical-align: middle;
+}
+
+.hr-lable::after {
+  content: '';
+  position: relative;
+  width: 25%;
+  background-color: rgba(0,0,0,0.2);
+  display: inline-block;
+  height: 1px;
+  vertical-align: middle;
+}
+
+.auth-google {
+  background-size: 16px 16px;
+  background-repeat: no-repeat;
+  background-position: left 10px center;
+  background-image: url(/img/googleLogo.svg);
+  background-color: #4285f4;
+  position: relative;
+  padding: 8px 0;
+  margin-bottom: 5px;
+  width: 100%;
+  border: 1px solid rgba(0,0,0,0.2);
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.auth-google::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 36px;
+  border-left: 1px solid rgba(0,0,0,0.1);
+  border-color: #2265d4;
+}
