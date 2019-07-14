@@ -39,3 +39,11 @@ a {
   width:450px;
   height:420px;
 }
+
+.itemList {
+  margin: 5em;
+}
+
+#fileBox {
+  margin-top: 2em;
+}
