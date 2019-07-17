@@ -102,3 +102,8 @@ a {
   border-left: 1px solid rgba(0,0,0,0.1);
   border-color: #2265d4;
 }
+
+.history {
+  overflow-y: scroll;
+  height: 200px;
+}

@@ -21,9 +21,51 @@ router.get('/delete', async (req, res) => {
     });
 });
 
+router.get('/deleteHistory', async (req, res) => {
+
+    const collection = db().collection('itemHistory');
+    const name = req.query.name;
+    const quantity = req.query.quantity;
+    let email = req.session.user;
+    const fridge = await getFridge(email);
+
+    collection.deleteOne({
+        fridge: fridge._id,
+        name: name,
+        quantity: parseInt(quantity)
+    }, (err, response) => {
+        if(err) throw err;
+        res.redirect('/fridge');
+    });
+});
+
+router.get('/addHistoryItem', async (req, res) => {
+    const itemCollection = db().collection('items');
+    let name = req.query.name.charAt(0).toUpperCase() + req.query.name.slice(1);
+    let quantity = req.query.quantity;
+    let quantityType = req.query.quantityType;
+    let email = req.session.user;
+
+    const fridge = await getFridge(email);
+
+
+    if(await itemCollection.findOne({name: name, fridge: fridge._id}) === null){
+        await itemCollection.insertOne({
+            fridge: fridge._id,
+            name: name,
+            quantity: parseInt(quantity),
+            quantityType: quantityType
+        });
+        res.redirect('/fridge');
+    }
+    else{
+        res.redirect('/fridge');
+    }
+});
+
 router.post('/add', async (req, res) => {
     const itemCollection = db().collection('items');
-
+    const history = db().collection('itemHistory');
     let name = req.body.name.charAt(0).toUpperCase() + req.body.name.slice(1);
     let quantity = req.body.quantity;
     let quantityType = req.body.quantityType;
@@ -41,6 +83,12 @@ router.post('/add', async (req, res) => {
     }
 
     if(await itemCollection.findOne({name: name, fridge: fridge._id}) === null){
+        await history.insertOne({
+            fridge: fridge._id,
+            name: name,
+            quantity: parseInt(quantity),
+            quantityType: quantityType
+        });
         await itemCollection.insertOne({
             fridge: fridge._id,
             name: name,

@@ -112,6 +112,29 @@
                         <option value="piece"> piece</option>
                     </select>
                 </div>
+
+                <h3>History</h3>
+                <div class="history">
+                    <ul class="list-group">
+                        {{#each history}}
+                            <li class="list-group-item">
+                                <div class="row">
+                                    <div class="col">
+                                        <h3>{{this.name}}</h3>
+                                        <p>Quantity:  {{this.quantity}} {{this.quantityType}} </p>
+                                    </div>
+                                    <div class="col">
+                                        <a href="/item/addHistoryItem?name={{this.name}}&quantity={{this.quantity}}&type={{this.quantityType}}" class="btn btn-outline-primary">Add item</a>
+                                    </div>
+                                    <div class="col">
+                                        <a href="/item/deleteHistory?name={{this.name}}&quantity={{this.quantity}}" class="btn
+                                        btn-outline-danger">Remove item</a>
+                                    </div>
+                                </div>
+                            </li>
+                        {{/each}}
+                    </ul>
+                </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-outline-primary">Add</button>
@@ -126,35 +149,35 @@
      aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalCenterTitle">Watchu wanna do?</h5> <br>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col">
-                            <form class="text-center" method="post" action="/fridge/accessGranted">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Watchu wanna do?</h5> <br>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col">
+                        <form class="text-center" method="post" action="/fridge/accessGranted">
                             <h3>Give access to your fridge</h3>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">Email address</label>
-                                <input type="email" class="form-control" name="email" aria-describedby="emailHelp" placeholder="Enter email">
+                                <input type="email" class="form-control" name="email" aria-describedby="emailHelp"
+                                       placeholder="Enter email">
                                 <button type="submit" class="btn btn-outline-primary">Access granted</button>
                             </div>
-                            </form>
-                        </div>
-                        <div class="col">
-                            <h3>Check another fridge</h3>
-                            {{#each access}}
-                                <a href="/fridge/{{this.user}}">
+                        </form>
+                    </div>
+                    <div class="col">
+                        <h3>Check another fridge</h3>
+                        {{#each access}}
+                            <a href="/fridge/{{this.user}}">
                                 {{this.user}}
-                                </a>
-                            {{/each}}
-                        </div>
+                            </a>
+                        {{/each}}
                     </div>
                 </div>
+            </div>
         </div>
     </div>
 </div>
-

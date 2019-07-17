@@ -12,6 +12,7 @@ exports.connectDatabase = (callback) => {
         db.createCollection("users");
         db.createCollection("items");
         db.createCollection("fridgeUsers");
+        db.createCollection("itemHistory");
         callback();
     });
 };
