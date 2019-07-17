@@ -121,3 +121,40 @@
     </div>
 </div>
 
+<!-- Modal -->
+<div class="modal fade" id="switchFridgeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle">Watchu wanna do?</h5> <br>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col">
+                            <form class="text-center" method="post" action="/fridge/accessGranted">
+                            <h3>Give access to your fridge</h3>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Email address</label>
+                                <input type="email" class="form-control" name="email" aria-describedby="emailHelp" placeholder="Enter email">
+                                <button type="submit" class="btn btn-outline-primary">Access granted</button>
+                            </div>
+                            </form>
+                        </div>
+                        <div class="col">
+                            <h3>Check another fridge</h3>
+                            {{#each access}}
+                                <a href="/fridge/{{this.user}}">
+                                {{this.user}}
+                                </a>
+                            {{/each}}
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</div>
+
