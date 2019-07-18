@@ -1,0 +1,160 @@
+<div class="container">
+    <div class="itemList">
+        <h2 class="text-center">Welcome to ur current state of ur fridg {{this.user}} </h2>
+        <hr>
+        <div class="text-center">
+            <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#addItemModal">
+                Add item
+            </button>
+            <br><br>
+        </div>
+        <ul class="list-group">
+            {{#each items}}
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col">
+                            <h3>{{this.name}}</h3>
+                            <p>Quantity:  {{this.quantity}} {{this.quantityType}} </p>
+                        </div>
+                        <div class="col">
+                            <!-- Button trigger modal -->
+                            <button type="button" class="btn btn-primary" data-toggle="modal"
+                                    data-target="#updateItemModal">
+                                Update item
+                            </button>
+                            <!-- Modal -->
+                            <div class="modal fade" id="updateItemModal" tabindex="-1" role="dialog"
+                                 aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                    <div class="modal-content">
+                                        <form method="post"
+                                              action="/fridge/{{../user}}/update?name={{this.name}}&quantity={{this.quantity}}">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalCenterTitle">Update item</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="row">
+                                                <div class="col-auto my-1">
+                                                    <input type="number" class="form-control" name="quantity"
+                                                           placeholder="Choose quantity">
+                                                    <div id="fileBox" class="custom-file">
+                                                        <input type="file" class="custom-file-input" id="customFile">
+                                                        <label class="custom-file-label" for="customFile">Choose
+                                                            file</label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-auto my-1">
+                                                    <select class="custom-select mr-sm-2" name="quantityType">
+                                                        <option value="{{this.quantityType}}" selected
+                                                                hidden>{{this.quantityType}}</option>
+                                                        <option value="grams">grams</option>
+                                                        <option value="kilograms">kilograms</option>
+                                                        <option value="milliliters">milliliters</option>
+                                                        <option value="liters">liters</option>
+                                                        <option value="piece">piece</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
+                                            </button>
+                                            <button type="submit" class="btn btn-outline-primary">Update</button>
+                                        </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <a href="/fridge/{{../user}}/delete?name={{this.name}}&quantity={{this.quantity}}" class="btn
+                            btn-outline-danger">Remove item</a>
+                        </div>
+                    </div>
+                </li>
+            {{/each}}
+        </ul>
+    </div>
+</div>
+
+<div class="emptyblock">
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="addItemModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <form class="text-center" method="post" action="/fridge/{{user}}/add">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle">Add new item</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="formGroupExampleInput">Item name</label>
+                        <input type="text" class="form-control" name="name" placeholder="Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="formGroupExampleInput">Quantity</label>
+                        <input class="form-control" type="number" name="quantity" placeholder="Choose quantity">
+                    </div>
+                    <select class="custom-select mr-sm-2" name="quantityType">
+                        <option value="grams"> grams</option>
+                        <option value="kilograms"> kilograms</option>
+                        <option value="milliliters"> milliliters</option>
+                        <option value="liters"> liters</option>
+                        <option value="piece"> piece</option>
+                    </select>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-outline-primary">Add</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="switchFridgeModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Watchu wanna do?</h5> <br>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col">
+                        <form class="text-center" method="post" action="/fridge/accessGranted">
+                            <h3>Give access to your fridge</h3>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Email address</label>
+                                <input type="email" class="form-control" name="email" aria-describedby="emailHelp" placeholder="Enter email">
+                                <button type="submit" class="btn btn-outline-primary">Access granted</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col">
+                        <h3>Check another fridge</h3>
+                        {{#each access}}
+                            <a href="/fridge/{{this.user}}">
+                                {{this.user}}
+                            </a>
+                        {{/each}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
