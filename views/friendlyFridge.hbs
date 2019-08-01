@@ -25,6 +25,7 @@
                                     data-target="#updateItemModal">
                                 Update item
                             </button>
+
                             <!-- Modal -->
                             <div class="modal fade" id="updateItemModal" tabindex="-1" role="dialog"
                                  aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -148,12 +149,8 @@
                         </form>
                     </div>
                     <div class="col">
-                        <h3>Check another fridge</h3>
-                        {{#each access}}
-                            <a href="/fridge/{{this.user}}">
-                                {{this.user}}
-                            </a>
-                        {{/each}}
+                        <a href="/fridge"> Back to own fridge
+                        </a>
                     </div>
                 </div>
             </div>
