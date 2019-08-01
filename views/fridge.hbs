@@ -9,9 +9,6 @@
             <button type="submit" class="btn btn-outline-primary" data-toggle="modal"
                     data-target="#historyModal"> History
             </button>
-            <button type="submit" class="btn btn-outline-primary" data-toggle="modal"
-                    data-target="#shoppingListModal"> Lists
-            </button>
             <br><br>
         </div>
         <ul class="list-group">
@@ -25,16 +22,15 @@
                         <div class="col">
                             <!-- Button trigger modal -->
                             <button type="button" class="btn btn-primary" data-toggle="modal"
-                                    data-target="#updateItemModal">
+                                    data-target=#{{this.name}}>
                                 Update item
                             </button>
                             <!-- Modal -->
-                            <div class="modal fade" id="updateItemModal" tabindex="-1" role="dialog"
+                            <div class="modal fade" id={{this.name}} tabindex="-1" role="dialog"
                                  aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                     <div class="modal-content">
-                                        <form method="post"
-                                              action="/item/update?name={{this.name}}&quantity={{this.quantity}}">
+                                        <form method="post" action="/item/update?name={{this.name}}&quantity={{this.quantity}}">
                                         <div class="modal-header">
                                             <h5 class="modal-title" id="exampleModalCenterTitle">Update item</h5>
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -81,8 +77,6 @@
     </div>
 </div>
 
-<div class="emptyblock">
-</div>
 
 <!-- Modal -->
 <div class="modal fade" id="historyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"

@@ -13,6 +13,7 @@ const usersRouter = require('./routes/users');
 const fridgeRouter = require('./routes/fridge');
 const itemRouter = require('./routes/item');
 const googleRouter = require('./routes/googleReturn');
+const listsRouter = require('./routes/lists')
 
 const app = express();
 
@@ -47,6 +48,7 @@ app.use('/users', usersRouter);
 app.use('/fridge', checkAuth, fridgeRouter);
 app.use('/item', checkAuth, itemRouter);
 app.use('/auth/google', googleRouter);
+app.use('/lists',checkAuth, listsRouter);
 
 function saveAuth(req, res, next) {
     if (req.session && req.session.user) {
