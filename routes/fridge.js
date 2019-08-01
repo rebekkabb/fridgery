@@ -78,8 +78,15 @@ router.get('/:user', async (req, res) => {
 
 router.get('/:user/*', async (req, res, next) => {
     console.log("test");
-    next();
-    // TODO: check if can do stuff with fridge
+    const currentUser = req.session.user;
+    const user = req.params.user;
+    const fridges = db().collection('fridges');
+
+    if (await fridges.findOne({user: user, access: currentUser})) {
+        next();
+    } else {
+        return res.status(401).send('No access to that fridge honey.');
+    }
 });
 
 router.post('/:user/add', async (req, res) => {
