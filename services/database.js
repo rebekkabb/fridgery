@@ -13,6 +13,8 @@ exports.connectDatabase = (callback) => {
         db.createCollection("items");
         db.createCollection("fridgeUsers");
         db.createCollection("itemHistory");
+        db.createCollection("shoppingList");
+        db.createCollection("recipes");
         callback();
     });
 };

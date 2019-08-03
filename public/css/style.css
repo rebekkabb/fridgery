@@ -107,3 +107,11 @@ a {
   overflow-y: scroll;
   height: 200px;
 }
+
+.list-group-item {
+  margin-top: 2em;
+}
+
+.midScreenButton {
+  margin-bottom: 2em;
+}

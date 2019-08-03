@@ -13,7 +13,7 @@ const usersRouter = require('./routes/users');
 const fridgeRouter = require('./routes/fridge');
 const itemRouter = require('./routes/item');
 const googleRouter = require('./routes/googleReturn');
-const listsRouter = require('./routes/lists')
+const listsRouter = require('./routes/lists');
 
 const app = express();
 
