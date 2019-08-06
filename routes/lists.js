@@ -92,6 +92,25 @@ router.get("/deleteRecipe", async (req, res) => {
     });
 });
 
+router.post("/checkInfo", async(req, res) => {
+    const list = db().collection('shoppingList');
+    let email = req.session.user;
+    let info = req.body.value;
+    let checked = req.body.checked;
+    console.log(info);
+    console.log(checked);
+
+    const fridge = await getFridge(email);
+
+    let chosen = {info: info, fridge: fridge._id};
+    let change = {$set: {checked: checked}};
+
+    list.updateOne(chosen, change, (err, response) => {
+        if(err) throw err;
+        res.send();
+    });
+});
+
 async function getFridge(email) {
     const fridges = db().collection('fridges');
     return await fridges.findOne({user: email})

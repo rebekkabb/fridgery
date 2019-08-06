@@ -27,9 +27,8 @@
                                 <h5 class="card-title text-center"> Shopping list</h5>
                                 <form>
                                     {{#each shoppingList}}
-                                        <input type="checkbox" name="info" value={{this.info}}>{{this.info}}<br>
+                                        <input type="checkbox" onclick="checkBoxes(this)" id="info" name="{{this.info}}" {{#if this.checked}}checked{{/if}}>{{this.info}}<br>
                                     {{/each}}
-                                    <button type="submit" class="btn btn-outline-primary">Update</button>
                                 </form>
                             </div>
                             <a href="/lists/deleteAll" class="btn btn-outline-danger">Clear the Board</a>
