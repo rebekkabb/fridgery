@@ -15,12 +15,15 @@
         <a class="navbar-brand" href="/">Fridgery</a>
         <div class="ml-auto">
             {{#if session}}
-                <button class="btn btn-outline-primary" type="button" data-toggle="modal" data-target="#switchFridgeModal">Fridge settings</button>
-
-                <a href="/users/logout">
-                    <button class="btn btn-outline-success" type="button">Log out</button>
-                </a>
-                {{else if index}}
+                {{#if fridge}}
+                    <button class="btn btn-outline-primary" type="button" data-toggle="modal"
+                            data-target="#switchFridgeModal">Fridge settings
+                    </button>
+                {{/if}}
+                    <a href="/users/logout">
+                        <button class="btn btn-outline-success" type="button">Log out</button>
+                    </a>
+            {{else if index}}
                 <button class="btn btn-outline-success" data-toggle="modal" type="button" data-target="#signupModal">
                     Register now!
                 </button>

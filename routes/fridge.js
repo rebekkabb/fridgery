@@ -29,7 +29,8 @@ router.get('/', async (req, res) => {
         items: itemsResult,
         user: req.session.user,
         access: accessFridges,
-        history: itemHistory
+        history: itemHistory,
+        fridge: true
     });
 
 });
