@@ -115,3 +115,18 @@ a {
 .midScreenButton {
   margin-bottom: 2em;
 }
+
+.recipes {
+  margin-top: 2em;
+  overflow-y: scroll;
+  height: 50%;
+}
+
+.shoppingList {
+  height: 50%;
+  margin-top: 6em;
+}
+
+.recipe-heading {
+  margin-top: 3em;
+}

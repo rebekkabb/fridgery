@@ -1,45 +1,44 @@
 <div class="container">
-    <div class="itemList">
-        <div class="row">
-            <div class="col">
-                <div class="row">
-                    <div class="col">
-                        <div class="midScreenButton">
-                            <a href="https://keep.google.com/" target="_blank">
-                                <button type="button" class="btn btn-primary">
-                                    Make a list here
-                                </button>
-                            </a>
-                        </div>
-                        <div class="card" style="width: 18rem;">
-                            <div class="card-body">
-                                <h5 class="card-title text-center"> Shopping list</h5>
-                                <form method="post" class="text-center" action="/lists/addInfo">
-                                    <input type="text" class="form-control mb-2" name="info">
-                                    <button type="submit" class="btn btn-outline-primary">Add</button>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card" style="width: 18rem;">
-                            <div class="card-body">
-                                <h5 class="card-title text-center"> Shopping list</h5>
-                                <form>
-                                    {{#each shoppingList}}
-                                        <input type="checkbox" onclick="checkBoxes(this)" id="info" name="{{this.info}}" {{#if this.checked}}checked{{/if}}>{{this.info}}<br>
-                                    {{/each}}
-                                </form>
-                            </div>
-                            <a href="/lists/deleteAll" class="btn btn-outline-danger">Clear the Board</a>
-                        </div>
+    <div class="row">
+        <div class="col">
+            <div class="shoppingList">
+                <div class="midScreenButton">
+                    <a href="https://keep.google.com/" target="_blank">
+                        <button type="button" class="btn btn-primary">
+                            Make a list here
+                        </button>
+                    </a>
+                </div>
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title text-center"> Shopping list</h5>
+                        <form method="post" class="text-center" action="/lists/addInfo">
+                            <input type="text" class="form-control mb-2" name="info">
+                            <button type="submit" class="btn btn-outline-primary">Add</button>
+                        </form>
                     </div>
                 </div>
+                <br>
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 class="card-title text-center"> Shopping list</h5>
+                        <form>
+                            {{#each shoppingList}}
+                                <input type="checkbox" onclick="checkBoxes(this)" id="info" name="{{this.info}}"
+                                       {{#if this.checked}}checked{{/if}}>{{this.info}}<br>
+                            {{/each}}
+                        </form>
+                    </div>
+                    <a href="/lists/deleteAll" class="btn btn-outline-danger">Clear the Board</a>
+                </div>
             </div>
-            <div class="col">
+        </div>
+
+        <div class="col">
+            <h3 class="recipe-heading"> Recipes </h3>
+            <div class="recipes">
                 <div class="card" style="width: 18rem;">
                     <div class="card-body text-center">
-                        <h5 class="card-title"> Recepie spot</h5>
                         <button type="button" class="btn btn-primary" data-toggle="modal"
                                 data-target=#addRecipeModal>
                             Add a new recipe
@@ -54,7 +53,8 @@
                                     <p>Ingredients will come with an future update ;)</p>
                                     <hr>
                                     <p>Instructions: {{this.instructions}}</p>
-                                    <a href="/lists/deleteRecipe?name={{this.name}}" class="btn btn-outline-danger">Remove the recipe</a>
+                                    <a href="/lists/deleteRecipe?name={{this.name}}" class="btn
+                                    btn-outline-danger">Remove the recipe</a>
                                 </li>
                             {{/each}}
                         </ul>
@@ -64,7 +64,6 @@
         </div>
     </div>
 </div>
-
 
 <div class="modal" id="addRecipeModal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
