@@ -121,6 +121,7 @@ a {
   margin-top: 2em;
   overflow-y: scroll;
   height: 50%;
+  width: 75%;
 }
 
 .shoppingList {
