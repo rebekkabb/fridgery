@@ -114,6 +114,7 @@ a {
 
 .midScreenButton {
   margin-bottom: 2em;
+  margin-left: 4.5em;
 }
 
 .recipes {
@@ -129,4 +130,32 @@ a {
 
 .recipe-heading {
   margin-top: 3em;
+}
+
+.hr-lable2 {
+  position: relative;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  clear: both;
+  overflow: hidden;
+}
+
+.hr-lable2::before {
+  content: '';
+  position: relative;
+  width: 25%;
+  background-color: rgba(0,0,0,0.2);
+  display: inline-block;
+  height: 1px;
+  vertical-align: middle;
+}
+
+.hr-lable2::after {
+  content: '';
+  position: relative;
+  width: 25%;
+  background-color: rgba(0,0,0,0.2);
+  display: inline-block;
+  height: 1px;
+  vertical-align: middle;
 }
