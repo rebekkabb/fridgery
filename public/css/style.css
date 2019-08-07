@@ -119,6 +119,7 @@ a {
 
 .recipes {
   margin-top: 2em;
+  margin-left: 10em;
   overflow-y: scroll;
   height: 50%;
   width: 75%;
@@ -126,10 +127,11 @@ a {
 
 .shoppingList {
   height: 50%;
-  margin-top: 6em;
+  margin-top: 10em;
 }
 
 .recipe-heading {
+  margin-left: 6em;
   margin-top: 3em;
 }
 
