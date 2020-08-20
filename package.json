@@ -14,7 +14,7 @@
     "http-errors": "~1.6.3",
     "morgan": "~1.9.1",
     "mongodb": "^3.2.7",
-    "bcrypt": "^3.0.6",
+    "bcrypt": "^5.0.0",
     "express-session": "^1.16.2",
     "connect-mongo": "^3.0.0",
     "font-awesome": "^4.7.0",
